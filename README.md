@@ -18,5 +18,6 @@ detection and classification bird species
 Разметка производилась с помощью Label Studio. Для каждого изображения были найдены bounding boxы.
 
 В качестве модели была выбрана предобученая сеть `ResNet-18`.
+
 ![object center prediction](https://github.com/LadaChernenko/bird_species_guide/blob/main/img/localisation_pred.png?raw=true)
 ___
