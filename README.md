@@ -1,7 +1,7 @@
 # bird_species_guide
 detection and classification bird species
 
-## ..*Bird detection
+## - Bird detection
 
 [object_detecrtion](https://github.com/LadaChernenko/bird_species_guide/tree/main/object_detecrtion)
 ### Libraries:
