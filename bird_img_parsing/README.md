@@ -7,4 +7,5 @@
 List of birds species obtained from wikipedia. 
 Images for each species were downloaded from google. 
 
-Alas only first 46 images have been downloaded. 
+~~Alas only first 46 images have been downloaded. ~~
+
