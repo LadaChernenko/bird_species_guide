@@ -13,7 +13,6 @@ import os
 
 
 bird_classes = ['black kite',
- 'canada goose',
  'chaffinch',
  'common magpie',
  'common raven',
@@ -34,8 +33,8 @@ bird_classes = ['black kite',
  'white wagtail',
  'willow grouse']
  
-link_file_path = './links/'
-download_dir = './bird_dataset/test/'
+link_file_path = './detection_dataset/links/'
+download_dir = './detection_dataset/dataset/'
 
 def get_image_links(query, link_file_path, num_requested = 100):
     query = query
@@ -43,33 +42,33 @@ def get_image_links(query, link_file_path, num_requested = 100):
     page="https://www.google.co.in/search?q="+google_query+"&source=lnms&tbm=isch"
 
     DRIVER_PATH = 'C:/Users/hd/Documents/chromdriver/chromedriver.exe'
-    # chrome_options = Options()
-    # chrome_options.add_argument("--headless")
-    # chrome_options.add_argument("disable-infobars")
+    options = webdriver.ChromeOptions()
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--ignore-ssl-errors')
 
-    driver = webdriver.Chrome(executable_path=DRIVER_PATH)
+    driver = webdriver.Chrome(executable_path=DRIVER_PATH, chrome_options=options)
 
     driver.get(page)
 
     
-    
     img_urls = set()
+    
     # scroll google images gallery
-    if num_requested > 40:
-        number_of_scrolls = int(num_requested / 400) + 1 
-        for _ in range(number_of_scrolls):
-                    for __ in range(10):
-                        # multiple scrolls needed to show all 400 images
-                        driver.execute_script("window.scrollBy(0, 1000000)")
-                        time.sleep(2)
-                    # to load next 400 images
-                    time.sleep(1)
-                    try:
-                        driver.find_element_by_xpath("//input[@value='Show more results']").click()
-                    except Exception as e:
-                        print("Process-{0} reach the end of page or get the maximum number of requested images".format(main_keyword))
-                        break
+    number_of_scrolls = int(num_requested / 400) + 1 
+    for _ in range(number_of_scrolls):
+            for __ in range(10):
+                # multiple scrolls needed to show all 400 images
+                driver.execute_script("window.scrollBy(0, 1000000)")
+                time.sleep(2)
+            # to load next 400 images
+            time.sleep(1)
+            try:
+                driver.find_element_by_xpath("//input[@value='Show more results']").click()
+            except Exception as e:
+                print("Process-{0} reach the end of page or get the maximum number of requested images".format(query))
+                break
 
+    # find all img url 
     thumbs = driver.find_elements_by_xpath('//a[@class="wXeWr islib nfEiy mM5pbd"]')
 
     print(len(thumbs))
@@ -100,6 +99,7 @@ def get_image_links(query, link_file_path, num_requested = 100):
     print('Store all the links in file {0}'.format(link_path))
 
     len(img_urls)
+    return link_path
 
 
 
@@ -149,20 +149,19 @@ def img_downloading(query, link_file, download_dir):
                     continue
 
 
-# for bird in bird_classes:
-#     get_image_links(bird, link_file_path, num_requested = 100)
 
-#     link_file = link_file_path + '_'.join(bird.split())+'_links.txt'
-#     img_downloading(bird, link_file, download_dir)
+for bird in bird_classes:
+    link_file = get_image_links(bird, link_file_path, num_requested = 100)
+    img_downloading(bird, link_file, download_dir)
 
-species = []
-with open('lat_species.txt', 'r') as f:
-    for bird in f:
-        species.append(bird)
-
-print(species[0])
+# # Russian bird specias dataset for classification
+# species = []
+# with open('lat_species.txt', 'r') as f:
+#     for bird in f:
+#         species.append(bird)
 
 
-get_image_links(species[0], link_file_path, num_requested = 100)
+
+
 
 
