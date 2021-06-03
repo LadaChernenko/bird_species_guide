@@ -37,5 +37,5 @@
 
 В качестве модели использовалась предобученная [EfficientNet](https://arxiv.org/pdf/1905.11946.pdf)
 
-![object center prediction](https://github.com/LadaChernenko/bird_species_guide/blob/main/img/localisation_pred.png?raw=true)
+
 ___
