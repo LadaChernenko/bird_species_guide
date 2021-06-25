@@ -3,7 +3,7 @@ detection and classification bird species
 
 ## Bird detection
 
-[object_detecrtion](https://github.com/LadaChernenko/bird_species_guide/tree/main/object_detecrtion)
+[object_detection](https://github.com/LadaChernenko/bird_species_guide/tree/main/object_detection)
 ### Libraries:
 * torch
 * torchvision
@@ -23,6 +23,7 @@ detection and classification bird species
 ___
 ## Image classification
 
+[image_classification](https://github.com/LadaChernenko/bird_species_guide/tree/main/bird_classification)
 
 ### Libraries:
 * torch
@@ -58,4 +59,4 @@ ___
 
 В качестве модели использовалась предобученная [EfficientNet](https://arxiv.org/pdf/1905.11946.pdf)
 
-___
+![img_classification](https://github.com/LadaChernenko/bird_species_guide/blob/main/img/classification_pred.png?raw=true)___
