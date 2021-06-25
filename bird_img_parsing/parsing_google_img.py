@@ -9,7 +9,7 @@ from user_agent import generate_user_agent
 import logging
 import time
 import random
-import os
+import os 
 
 
 bird_classes = ['black kite',
@@ -33,24 +33,34 @@ bird_classes = ['black kite',
  'white wagtail',
  'willow grouse']
  
-link_file_path = './detection_dataset/links/'
-download_dir = './detection_dataset/dataset/'
+
+dataset_dir = './bird_dataset/'
+
+def make_dataset_dir(link_path):
+
+    link_file_path = link_path + 'links/'
+    download_dir = link_path + 'dataset/'
+    if not os.path.exists(link_file_path):
+        os.makedirs(link_file_path)
+
+    if not os.path.exists(download_dir):
+        os.makedirs(download_dir)
+
+    return link_file_path, download_dir
+
 
 def get_image_links(query, link_file_path, num_requested = 100):
+
     query = query
     google_query='+'.join(query.split())
-    page="https://www.google.co.in/search?q="+google_query+"&source=lnms&tbm=isch"
+    page="https://www.google.co.in/search?q="+'"'+google_query+'"'+"&source=lnms&tbm=isch"
 
     DRIVER_PATH = 'C:/Users/hd/Documents/chromdriver/chromedriver.exe'
     options = webdriver.ChromeOptions()
-    options.add_argument('--ignore-certificate-errors')
-    options.add_argument('--ignore-ssl-errors')
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
     driver = webdriver.Chrome(executable_path=DRIVER_PATH, chrome_options=options)
-
     driver.get(page)
-
-    
     img_urls = set()
     
     # scroll google images gallery
@@ -69,7 +79,10 @@ def get_image_links(query, link_file_path, num_requested = 100):
                 break
 
     # find all img url 
-    thumbs = driver.find_elements_by_xpath('//a[@class="wXeWr islib nfEiy mM5pbd"]')
+    
+    # thumbs = driver.find_elements_by_xpath('//a[@class="wXeWr islib nfEiy mM5pbd"]')
+    thumbs = driver.find_elements_by_css_selector("img.Q4LuWd")
+    
 
     print(len(thumbs))
     for thumb in thumbs:
@@ -89,9 +102,7 @@ def get_image_links(query, link_file_path, num_requested = 100):
                     img_urls.add(url)
                     print("Found image url: " + url)
                     
-
     driver.quit()
-    
     link_path = link_file_path + '_'.join(query.split())+'_links.txt'
     with open(link_path, 'w') as wf:
             for url in img_urls:
@@ -102,9 +113,8 @@ def get_image_links(query, link_file_path, num_requested = 100):
     return link_path
 
 
-
-
 def img_downloading(query, link_file, download_dir):
+
     count = 0
     headers = {}
 
@@ -118,7 +128,6 @@ def img_downloading(query, link_file, download_dir):
                 try:
                     o = urlparse(link)
                     ref = o.scheme + '://' + o.hostname
-                    
                     ua = generate_user_agent()
                     headers['User-Agent'] = ua
                     headers['referer'] = ref
@@ -149,19 +158,21 @@ def img_downloading(query, link_file, download_dir):
                     continue
 
 
+# for bird in bird_classes:
+#     link_file = get_image_links(bird, link_file_path, num_requested = 100)
+#     img_downloading(bird, link_file, download_dir)
 
-for bird in bird_classes:
-    link_file = get_image_links(bird, link_file_path, num_requested = 100)
+# Russian bird specias dataset for classification
+species = []
+with open('lat_species.txt', 'r') as f:
+    for bird in f:
+        species.append(bird)
+
+# print(species[30])
+link_file_path, download_dir = make_dataset_dir(dataset_dir)
+
+
+for bird in species[87:90]:
+    # print(bird)
+    link_file = get_image_links(bird, link_file_path, num_requested = 800)
     img_downloading(bird, link_file, download_dir)
-
-# # Russian bird specias dataset for classification
-# species = []
-# with open('lat_species.txt', 'r') as f:
-#     for bird in f:
-#         species.append(bird)
-
-
-
-
-
-
