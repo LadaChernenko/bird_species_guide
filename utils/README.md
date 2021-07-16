@@ -1,4 +1,4 @@
-## Dataset images parser:
+﻿## Utils for dataset creation:
  File | Parsing source  | Libraries  
 --- | --- | ---
 [parsing_google_img.py](https://github.com/LadaChernenko/bird_species_guide/blob/main/bird_img_parsing/parsing_google_img.py) | Google Images |   selenium; urllib; user_agent; logging
