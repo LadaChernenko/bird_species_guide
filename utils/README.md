@@ -10,7 +10,8 @@ Images for each species were downloaded from google.
 
 ~Alas only first 46 images have been downloaded.~
 
-
+`bounding_box_generator` make txt file for each image with bounding boxes coordinate and labels [[0, 0.2725, 0.5341463414634147, 0.495, 0.8731707317073171]]
+Label studio create json file, but it contains redundant information.
 ```javascript
 {"id": 5618, 
 "annotations": [{"id": 5848, 
@@ -28,10 +29,10 @@ Images for each species were downloaded from google.
                                       "height": 78.125, 
                                       "rotation": 0, 
                                       "rectanglelabels": ["willow_grouse"]}, 
-                                      "id": "slQsY9CKWc", 
-                                      "from_name": "label", 
-                                      "to_name": "image", 
-                                      "type": "rectanglelabels"}], 
+                            "id": "slQsY9CKWc", 
+                            "from_name": "label", 
+                            "to_name": "image", 
+                            "type": "rectanglelabels"}], 
                   "was_cancelled": false, 
                   "ground_truth": false, 
                   "created_at": "2021-07-03T14:27:52.880146Z", 
