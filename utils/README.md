@@ -10,7 +10,10 @@ Images for each species were downloaded from google.
 
 ~Alas only first 46 images have been downloaded.~
 
-`bounding_box_generator` make txt file for each image with bounding boxes coordinate and labels [[0, 0.2725, 0.5341463414634147, 0.495, 0.8731707317073171]]
+`bounding_box_generator` make txt file for each image with bounding boxes coordinate and labels 
+```
+[[0, 0.2725, 0.5341463414634147, 0.495, 0.8731707317073171]]
+```
 Label studio create json file, but it contains redundant information.
 ```javascript
 {"id": 5618, 
