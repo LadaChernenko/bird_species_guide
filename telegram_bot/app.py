@@ -8,34 +8,22 @@ from efficientnet_pytorch import EfficientNet
 import random
 from config import IMG_SIZE
 
-num_classes = 20
+labels = []
+with open('labels.txt', 'r') as rf:
+    for label in rf:
+        labels.append(label[:-1])
+       
+label_dict = {i:labels[i] for i in range(0, len(labels))}
+
+num_classes = len(label_dict)
 model = EfficientNet.from_name('efficientnet-b0')
-checkpoint = torch.load('./my_checkpoint2021-09-04.pth.tar', map_location=torch.device('cpu'))
+checkpoint = torch.load('./my_checkpoint2021-11-21.pth.tar', map_location=torch.device('cpu'))
 in_features = model._fc.in_features
 model._fc = nn.Linear(in_features, num_classes)
 model.load_state_dict(checkpoint["state_dict"])
 model.eval()
 
-label_dict = {0: 'black_kite',
-1: 'chaffinch',
-2: 'common_magpie',
-3: 'common_raven',
-4: 'crested_tit',
-5: 'eurasian_jay',
-6: 'eurasian_pygmy-owl',
-7: 'eurasian_tree_sparrow',
-8: 'european_turtle-dove',
-9: 'great_spotted_woodpecker',
-10: 'hazel_grouse',
-11: 'northern_harrier',
-12: 'rock_pigeon',
-13: 'ruddy_shelduck',
-14: 'snow_goose',
-15: 'snowy_owl',
-16: 'waxwing',
-17: 'white_stork',
-18: 'white_wagtail',
-19: 'willow_grouse'}
+
 
 def transform(image, img_size, split):
     # different transformations for 'train' or 'test' splits
