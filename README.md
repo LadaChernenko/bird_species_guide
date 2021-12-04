@@ -7,15 +7,6 @@ ___
 
 [image_classification](https://github.com/LadaChernenko/bird_species_guide/tree/main/bird_classification)
 
-### Libraries:
-* torch
-* torchvision
-* numpy
-* matplotlib
-* PIL
-* pathlib
-* efficientnet_pytorch
-
 В задаче классификации участвовали фотографии 350 классов. Это распростинённые в европейской части России виды птиц.
 (фотографии были собраны из google images по латинским названиям.
 
