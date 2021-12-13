@@ -1,6 +1,5 @@
 import os
 TOKEN = os.getenv('BOT_TOKEN')
-# TOKEN = '1944875868:AAH3sciPPOs7gaQHdge4pkQAvLMhax8TC_A'
 IMG_SIZE = [256, 256]
 
 # webhook settings
