@@ -1,11 +1,8 @@
-import os
 import torch
 from torch import nn
 import torchvision.transforms as T
-import numpy as np
 import PIL
 from efficientnet_pytorch import EfficientNet
-import random
 from config import IMG_SIZE
 
 labels = []
@@ -25,29 +22,11 @@ model.eval()
 
 
 
-def transform(image, img_size, split):
-    # different transformations for 'train' or 'test' splits
-    assert split in {'TRAIN', 'TEST'}
+def transform(image, img_size):
 
     mean=[0.485, 0.456, 0.406]
     std=[0.229, 0.224, 0.225]
     new_image = image
-
-    if split == 'TRAIN':
-        img_blurrer = T.GaussianBlur(kernel_size=(5, 9), sigma=(0.1, 5))
-        img_autocontrast = T.RandomAutocontrast(p=0.5)
-        rotate = T.RandomRotation(degrees=(0, 90))
-        sharpness_adjuster = T.RandomAdjustSharpness(sharpness_factor=2)
-        hflip = T.RandomHorizontalFlip(p=0.5)
-
-        new_image = hflip(new_image)
-
-        if random.random() < 0.4:
-            new_image = img_blurrer(new_image)
-            new_image = img_autocontrast(new_image)
-        if random.random() < 0.3:
-            new_image = sharpness_adjuster(new_image)
-            new_image = rotate(new_image)
             
     base_transform = T.Compose([T.ToTensor(), 
                                 T.Resize(img_size), 
@@ -58,7 +37,7 @@ def transform(image, img_size, split):
 
 def get_prediction(input_img_path):
     input_img = PIL.Image.open(input_img_path)
-    tensor = transform(input_img, IMG_SIZE, 'TEST')
+    tensor = transform(input_img, IMG_SIZE)
     outputs = model(torch.unsqueeze(tensor, dim=0))
     # predictions
     labels = []
