@@ -1,6 +1,5 @@
-# 
 
-## Utils for dataset creation:
+# Utils for dataset creation:
  File | What does it do   | Libraries  
 --- | --- | ---
 [parsing_google_img.py](https://github.com/LadaChernenko/bird_species_guide/blob/main/collecting_dataset/parsing_google_img.py) | download Google Images |   selenium; urllib; user_agent; logging
