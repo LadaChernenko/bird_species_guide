@@ -4,9 +4,12 @@ classification bird species
 ## Dataset preparation 
 [Код для сбора датасета](https://github.com/LadaChernenko/bird_species_guide/tree/main/collecting_dataset)
 
-Для обучения нейросети был собран датасет с птицами европейской части России. Всего в обучении участовало 350 классов.
+Для обучения нейросети был собран датасет с птицами европейской части России. 
+Всего в обучении участовало 350 классов.
+
 Не менее 100 изображений на класс.
-[Bird dataset](https://drive.google.com/file/d/1cUw8hBoF0PEYHbLMfWB2x-k2lV1YMPb5/view?usp=sharing)
+
+[Bird dataset from Google Drive](https://drive.google.com/file/d/1cUw8hBoF0PEYHbLMfWB2x-k2lV1YMPb5/view?usp=sharing)
 
 - латинские названия птиц были взяты [тут](https://www.ebirds.ru/russia/index.html)
 - с помощью библиотек selenium; urllib; user_agent; logging были собраны изображения из google images по латинским названиям
