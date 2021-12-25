@@ -27,6 +27,8 @@ ___
 
 ___
 ## Telegram bot
+
+[telegram_bot](https://github.com/LadaChernenko/bird_species_guide/tree/main/telegram_bot)
 ### Библиотеки:
 - aiogram==2.17.1
 - torch==1.10.0+cpu
@@ -35,14 +37,13 @@ ___
 - wikipedia==1.4.0
 
 [requirements.txt](https://github.com/LadaChernenko/bird_species_guide/blob/main/telegram_bot/requirements.txt)
-
+### Принцип работы бота:
 - 1 Телеграм бот **bot.py** получает на вход картинку 
 - 2 Сохраняет в папку
 - 3 Передаёт на вход **app.py**
- - 3.1 Трансформирование изображения
- - 3.2 Предсказание класса и вероятности предобученной моделью efficientnet-b0
+  - 3.1 Трансформирование изображения
+  - 3.2 Предсказание класса и вероятности предобученной моделью efficientnet-b0
 - 4 Бот передёт пользователю топ-3 предсказанных класса и вероятности.
 - 5 Удаляет картинку
 - 6 По латнскому названию класса с максимальной вероятностью выдаётся страница с википедии **wiki_parser.py**
 
-[telegram_bot](https://github.com/LadaChernenko/bird_species_guide/tree/main/telegram_bot)
