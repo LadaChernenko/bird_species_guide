@@ -27,7 +27,7 @@ ___
 
 ___
 ## Telegram bot
-
+@bird_species_bot по [ссылке](https://t.me/bird_species_bot)
 [telegram_bot](https://github.com/LadaChernenko/bird_species_guide/tree/main/telegram_bot)
 ### Библиотеки:
 - aiogram==2.17.1
