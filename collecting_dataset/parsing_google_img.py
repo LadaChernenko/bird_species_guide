@@ -10,31 +10,7 @@ import logging
 import time
 import random
 import os 
-
-
-bird_classes = ['black kite',
- 'chaffinch',
- 'common magpie',
- 'common raven',
- 'crested tit',
- 'eurasian jay',
- 'eurasian pygmy-owl',
- 'eurasian tree sparrow',
- 'european turtle-dove',
- 'great spotted woodpecker',
- 'hazel grouse',
- 'northern harrier',
- 'rock pigeon',
- 'ruddy shelduck',
- 'snow goose',
- 'snowy owl',
- 'waxwing',
- 'white stork',
- 'white wagtail',
- 'willow grouse']
- 
-
-
+from config import DRIVER_PATH, DATASET_PATH
 
 def make_dataset_dir(link_path):
 
@@ -54,8 +30,6 @@ def get_image_links(query, link_file_path, num_requested = 100):
     query = query
     google_query='+'.join(query.split())
     page="https://www.google.co.in/search?q="+'"'+google_query+'"'+"&source=lnms&tbm=isch"
-    # сюда вписать путь до chromedriver`а у себя на компьютере
-    DRIVER_PATH = 'C:/Users/hd/Documents/chromdriver/chromedriver.exe'
     options = webdriver.ChromeOptions()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
@@ -99,7 +73,7 @@ def get_image_links(query, link_file_path, num_requested = 100):
                     url = url_element.get_attribute('src')
                 except e:
                     print("Error getting one url")
-                if url.startswith('http') and not url.startswith('https://encrypted-tbn0.gstatic.com') and not url.startswith('https://media-cdn.tripadvisor.com'):
+                if url.startswith('http') and not url.startswith('https://encrypted-tbn0.gstatic.com'):
                     img_urls.add(url)
                     print("Found image url: " + url)
                     
@@ -114,7 +88,7 @@ def get_image_links(query, link_file_path, num_requested = 100):
     return link_path
 
 
-def img_downloading(query, link_file, download_dir):
+def img_downloading(query, link_file, download_dir, prefix):
 
     count = 0
     headers = {}
@@ -136,7 +110,7 @@ def img_downloading(query, link_file, download_dir):
                     req = urllib.request.Request(link.strip(), headers = headers)
                     response = urllib.request.urlopen(req)
                     data = response.read()
-                    file_path = img_dir + '{0}.jpg'.format(count)
+                    file_path = img_dir + '{0}_{1}.jpg'.format(prefix, count)
                     with open(file_path,'wb') as wf:
                         wf.write(data)
 
@@ -159,16 +133,14 @@ def img_downloading(query, link_file, download_dir):
                     continue
 
 
-# for bird in bird_classes:
-#     link_file = get_image_links(bird, link_file_path, num_requested = 100)
-#     img_downloading(bird, link_file, download_dir)
 
 if __name__ == "__main__":
     
-    dataset_dir = 'c:/Users/hd/Documents/Python projects/bird_species/bird_dataset/'
+    dataset_dir = DATASET_PATH
     # Russian bird specias dataset for classification
     species = []
-    with open('lat_species.txt', 'r') as f:
+    lat_species = 'species.txt' # файл с латинскими названиями птиц
+    with open(lat_species, 'r') as f:
         for bird in f:
             species.append(bird)
 
@@ -181,5 +153,9 @@ if __name__ == "__main__":
         if bird[:-1] not in have_bird:
             
             link_file = get_image_links(bird, link_file_path, num_requested = 401)
-            img_downloading(bird, link_file, download_dir)
+            img_downloading(bird, link_file, download_dir, '0_')
+
+
+   
+
 

@@ -1,10 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+from config import LAT_SPECIES_URL
 
-
-FILE = 'wikipage.html'
-URL = 'https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BF%D1%82%D0%B8%D1%86_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8'
+FILE = 'ebirds.html'
+URL = LAT_SPECIES_URL
 
 def load_url_contents_cached(url, local_file):
     # если есть на диске, то считаем с диска
@@ -24,7 +24,7 @@ def load_url_contents_cached(url, local_file):
 
 def get_title(contents):
     soup = BeautifulSoup(contents, 'lxml')
-    titles = soup.find_all('i')
+    titles = soup.find_all('em')
     lat_titles = []
 
     for i in range(len(titles)):
@@ -35,12 +35,16 @@ def get_title(contents):
 
 
 
-def get_wiki_species(species_file):
+def get_wiki_species():
     content = load_url_contents_cached(URL, FILE)
-    lat_species = get_title(content)
-    lat_species = lat_species[:893]
+    species = get_title(content)
+    species = species
+    print('number of species:', len(species))
 
-    with open('lat_species.txt', 'w', encoding="utf-8") as f:
-        for bird in lat_species:
+    with open('species.txt', 'w', encoding="utf-8") as f:
+        for bird in species:
             f.write(bird +'\n')
-    
+
+
+
+

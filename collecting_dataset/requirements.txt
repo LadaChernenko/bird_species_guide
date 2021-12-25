@@ -1,0 +1,5 @@
+beautifulsoup4==4.10.0
+requests==2.25.1
+selenium==3.141.0
+user_agent==0.1.9
+wikipedia==1.4.0
