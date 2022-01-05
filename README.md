@@ -1,7 +1,6 @@
 # Bird species bot (Телеграм бот для классификации птиц по фотографии)
 
 
-classification bird species
 
 ## Dataset preparation 
 [Код для сбора датасета](https://github.com/LadaChernenko/bird_species_guide/tree/main/collecting_dataset)
@@ -29,6 +28,9 @@ ___
 
 
 В качестве модели использовалась предобученная [EfficientNet](https://arxiv.org/pdf/1905.11946.pdf)
+### Architecture
+![Architecture](https://github.com/LadaChernenko/bird_species_guide/blob/main/img/Architecture-of-EfficientNet-B0-with-MBConv-as-Basic-building-blocks.png)
+
 
 ![img_classification](https://github.com/LadaChernenko/bird_species_guide/blob/main/img/classification_pred.png?raw=true)___
 
