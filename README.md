@@ -34,6 +34,11 @@ ___
 ### Result
 ![img_classification](https://github.com/LadaChernenko/bird_species_guide/blob/main/img/classification_pred.png?raw=true)___
 
+- train loss: 0.665
+- validation loss: 0.693
+
+- Train accuracy: 82.559685%
+- Validation accuracy: 81.350510%
 ___
 ## Telegram bot
 @bird_species_bot по [ссылке](https://t.me/bird_species_bot)
