@@ -32,8 +32,9 @@ ___
 ![Architecture](https://github.com/LadaChernenko/bird_species_guide/blob/main/img/Architecture-of-EfficientNet-B0-with-MBConv-as-Basic-building-blocks.png)
 
 ### Result
-![img_classification](https://github.com/LadaChernenko/bird_species_guide/blob/main/img/classification_pred.png?raw=true)___
+![img_classification](https://github.com/LadaChernenko/bird_species_guide/blob/main/img/classification_pred.png?raw=true)
 
+**CrossEntropyLoss**
 - train loss: 0.665
 - validation loss: 0.693
 
@@ -63,3 +64,9 @@ ___
 - 5 Удаляет картинку
 - 6 По латнскому названию класса с максимальной вероятностью выдаётся страница с википедии **wiki_parser.py**
 
+___
+## Problems:
+
+- Модель ошибается на визуально похожих классах
+- В датасете присутствуют не все возможные классы
+- Бот не выдаёт адекватный ответ для изображений, не содержащих птиц
