@@ -1,4 +1,6 @@
-# bird_species_guide
+# Bird species bot (Телеграм бот для классификации птиц по фотографии)
+
+
 classification bird species
 
 ## Dataset preparation 
