@@ -38,7 +38,7 @@ For model used pretrained [EfficientNet-b0](https://arxiv.org/pdf/1905.11946.pdf
 
 Loss function **CrossEntropyLoss**
 
-part of dataset |  CrossEntropyLoss  | Accuracy  
+dataset part |  CrossEntropyLoss  | Accuracy  
 --- | --- | ---
 train | 0.665 | 82.559685%
 validation | 0.693 | 81.350510%
