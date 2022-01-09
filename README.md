@@ -26,7 +26,7 @@ ___
 
 ### Architecture
 
-For model used pretrained [EfficientNet-b0](https://arxiv.org/pdf/1905.11946.pdf)
+As a model pretrained  [EfficientNet-b0](https://arxiv.org/pdf/1905.11946.pdf) was used
 
 350 classes on the last layer 
 
