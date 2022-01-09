@@ -30,7 +30,7 @@ ___
 For model used pretrained [EfficientNet-b0](https://arxiv.org/pdf/1905.11946.pdf)
 350 classes on the last layer 
 
-![Architecture](https://github.com/LadaChernenko/bird_species_guide/blob/main/img/Architecture-of-EfficientNet-B0-with-MBConv-as-Basic-building-blocks.png "*EfficientNet-b0*")
+![Architecture](https://github.com/LadaChernenko/bird_species_guide/blob/main/img/Architecture-of-EfficientNet-B0-with-MBConv-as-Basic-building-blocks.png?raw=true )
 *EfficientNet-b0*
 
 ### Results
