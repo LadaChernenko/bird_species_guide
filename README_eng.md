@@ -5,8 +5,7 @@
 ## Dataset preparation 
 [code for collecting dataset ](https://github.com/LadaChernenko/bird_species_guide/tree/main/collecting_dataset)
 
-A dataset was collected based on the Latin names of birds from the European part of Russia 
-In total, 350 species were included in the dataset.
+A dataset was collected for neural network training. It was based on the latin names of birds from european part of Russia and included 350 species in total.
 
 At least 100 images per class. 
 
