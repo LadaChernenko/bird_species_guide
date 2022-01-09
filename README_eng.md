@@ -37,9 +37,10 @@ For model used pretrained [EfficientNet-b0](https://arxiv.org/pdf/1905.11946.pdf
 ![img_classification](https://github.com/LadaChernenko/bird_species_guide/blob/main/img/classification_pred.png?raw=true)
 
 Loss function **CrossEntropyLoss**
- |  CrossEntropyLoss  | Accuracy  
+
+part of dataset |  CrossEntropyLoss  | Accuracy  
 --- | --- | ---
-train | 0.665| 82.559685%
+train | 0.665 | 82.559685%
 validation | 0.693 | 81.350510%
 
 ___
