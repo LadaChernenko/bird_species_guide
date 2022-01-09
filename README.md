@@ -58,13 +58,13 @@ ___
 
 [requirements.txt](https://github.com/LadaChernenko/bird_species_guide/blob/main/telegram_bot/requirements.txt)
 ### How it works:
-- 1 Telegram bot **bot.py** get the image 
+- 1 Telegram bot **bot.py** gets the image 
 - 2 Saves to folder 
-- 3 **app.py** get img
+- 3 **app.py** gets img
   - 3.1 Transform
-  - 3.2 Pretrained efficientnet-b0 predict labels and probability
-- 4 Bot give to the user  top-3 predicted classes and probability
-- 5 Delete the image
-- 6 **wiki_parser.py** search wikipedia page for latin name of species and give it to user
+  - 3.2 Pretrained efficientnet-b0 predicts labels and probability
+- 4 Bot gives to the user  top-3 predicted classes and probability
+- 5 Deletes the image
+- 6 **wiki_parser.py** searches wikipedia page for latin name of species and give it to user
 
 
