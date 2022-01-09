@@ -1,12 +1,12 @@
-# Bird species bot (Телеграм бот для классификации птиц по фотографии)
+# Bird species telegram bot 
 
 
 
 ## Dataset preparation 
-[Код для сбора датасета](https://github.com/LadaChernenko/bird_species_guide/tree/main/collecting_dataset)
+[code for collecting dataset ](https://github.com/LadaChernenko/bird_species_guide/tree/main/collecting_dataset)
 
-Для обучения нейросети был собран датасет с птицами европейской части России. 
-Всего в обучении участовало 350 классов.
+A dataset was collected based on the Latin names of birds from the European part of Russia 
+In total, 350 species were included in the dataset.
 
 At least 100 images per class. 
 
@@ -37,11 +37,11 @@ For model used pretrained [EfficientNet-b0](https://arxiv.org/pdf/1905.11946.pdf
 ![img_classification](https://github.com/LadaChernenko/bird_species_guide/blob/main/img/classification_pred.png?raw=true)
 
 Loss function **CrossEntropyLoss**
-- train loss: 0.665
-- validation loss: 0.693
+ |  CrossEntropyLoss  | Accuracy  
+--- | --- | ---
+train | 0.665| 82.559685%
+validation | 0.693 | 81.350510%
 
-- Train accuracy: 82.559685%
-- Validation accuracy: 81.350510%
 ___
 ## Telegram bot
 @bird_species_bot  [link](https://t.me/bird_species_bot)
